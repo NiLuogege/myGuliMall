@@ -7,6 +7,12 @@ spring:
     url: jdbc:mysql://192.168.56.10:3306/gulimall_ums?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: root
+  application:
+    name: gulimail-member
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
 
 # MapperScan
 # sql映射文件位置
