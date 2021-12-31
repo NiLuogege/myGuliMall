@@ -29,9 +29,16 @@
         </dependency>
 
         <!--        服务注册-->
+        <!-- nacos中ribbon会造成loadbalanc包失效 所以 去掉ribbon依赖-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
 
