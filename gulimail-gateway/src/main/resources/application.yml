@@ -1,0 +1,19 @@
+server:
+  port: 8887
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+#   测试连接  http://localhost:8887/?url=baidu
+        - id: baidu_route
+          uri: https://www.baidu.com
+          predicates:
+            - Query=url,baidu
+#测试连接  http://localhost:8887/?url=qq
+        - id: test_route
+          uri: https://www.qq.com
+          predicates:
+            - Query=url,qq
