@@ -60,8 +60,7 @@ public class CategoryController {
     //@RequiresPermissions("gulimailproduct:category:info")
     public R info(@PathVariable("catId") Long catId) {
         CategoryEntity category = categoryService.getById(catId);
-
-        return R.ok().put("category", category);
+        return R.ok().put("data", category);
     }
 
     /**
@@ -78,11 +77,10 @@ public class CategoryController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
-    //@RequiresPermissions("gulimailproduct:category:update")
-    public R update(@RequestBody CategoryEntity category) {
-        categoryService.updateById(category);
-
+    @RequestMapping("/update/sort")
+    // @RequiresPermissions("product:category:update")
+    public R update(@RequestBody CategoryEntity[] category) {
+        categoryService.updateBatchById(Arrays.asList(category));
         return R.ok();
     }
 
