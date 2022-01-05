@@ -1,15 +1,15 @@
 package com.niluogege.gulimailproduct.dao;
 
-import com.niluogege.gulimailproduct.entity.SkuInfoEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.niluogege.gulimailproduct.entity.SkuInfoEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * sku信息
  * 
- * @author niluogege
- * @email niluogege@gmail.com
- * @date 2021-12-29 19:08:51
+ * @author 夏沫止水
+ * @email HeJieLin@gulimall.com
+ * @date 2020-05-22 19:00:18
  */
 @Mapper
 public interface SkuInfoDao extends BaseMapper<SkuInfoEntity> {

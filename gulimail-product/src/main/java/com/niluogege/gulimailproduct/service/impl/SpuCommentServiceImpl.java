@@ -1,16 +1,16 @@
 package com.niluogege.gulimailproduct.service.impl;
 
-import org.springframework.stereotype.Service;
-import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.niluogege.common.utils.PageUtils;
 import com.niluogege.common.utils.Query;
-
 import com.niluogege.gulimailproduct.dao.SpuCommentDao;
 import com.niluogege.gulimailproduct.entity.SpuCommentEntity;
 import com.niluogege.gulimailproduct.service.SpuCommentService;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 
 @Service("spuCommentService")
