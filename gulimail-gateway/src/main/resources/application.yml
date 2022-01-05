@@ -21,9 +21,20 @@ spring:
           uri: https://www.qq.com
           predicates:
             - Query=url,qq
+
+        - id: product_route
+          uri: lb://gulimail-product # 路由给对应服务，lb代表负载均衡
+          predicates:
+            - Path=/api/product/** # 默认前端项目都带上api前缀，
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment} # 重写url
+
         - id: admin_route
           uri: lb://renren-fast # 路由给renren-fast，lb代表负载均衡
           predicates:
             - Path=/api/** # 默认前端项目都带上api前缀，
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment} # 重写url
+
+
+
