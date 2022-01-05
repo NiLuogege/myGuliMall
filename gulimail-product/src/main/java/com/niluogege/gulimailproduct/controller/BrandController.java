@@ -26,7 +26,7 @@ import com.niluogege.common.utils.R;
  * @date 2021-12-29 19:08:51
  */
 @RestController
-@RequestMapping("gulimailproduct/brand")
+@RequestMapping("product/brand")
 public class BrandController {
     @Autowired
     private BrandService brandService;
