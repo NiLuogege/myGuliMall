@@ -1,6 +1,7 @@
 package com.niluogege.gulimailproduct.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -17,7 +18,6 @@ import com.niluogege.common.utils.PageUtils;
 import com.niluogege.common.utils.R;
 
 
-
 /**
  * 商品三级分类
  *
@@ -26,7 +26,7 @@ import com.niluogege.common.utils.R;
  * @date 2021-12-29 19:08:51
  */
 @RestController
-@RequestMapping("gulimailproduct/category")
+@RequestMapping("product/category")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -36,10 +36,20 @@ public class CategoryController {
      */
     @RequestMapping("/list")
     //@RequiresPermissions("gulimailproduct:category:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = categoryService.queryPage(params);
 
         return R.ok().put("page", page);
+    }
+
+    /**
+     * 查出所有分类以及子分类，以树形结构组装起来
+     */
+    @RequestMapping("/list/tree")
+    // @RequiresPermissions("product:category:list")
+    public R listTree(@RequestParam Map<String, Object> params) {
+        List<CategoryEntity> entities = categoryService.listWithTree();
+        return R.ok().put("data", entities);
     }
 
 
@@ -48,8 +58,8 @@ public class CategoryController {
      */
     @RequestMapping("/info/{catId}")
     //@RequiresPermissions("gulimailproduct:category:info")
-    public R info(@PathVariable("catId") Long catId){
-		CategoryEntity category = categoryService.getById(catId);
+    public R info(@PathVariable("catId") Long catId) {
+        CategoryEntity category = categoryService.getById(catId);
 
         return R.ok().put("category", category);
     }
@@ -59,8 +69,8 @@ public class CategoryController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("gulimailproduct:category:save")
-    public R save(@RequestBody CategoryEntity category){
-		categoryService.save(category);
+    public R save(@RequestBody CategoryEntity category) {
+        categoryService.save(category);
 
         return R.ok();
     }
@@ -70,8 +80,8 @@ public class CategoryController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("gulimailproduct:category:update")
-    public R update(@RequestBody CategoryEntity category){
-		categoryService.updateById(category);
+    public R update(@RequestBody CategoryEntity category) {
+        categoryService.updateById(category);
 
         return R.ok();
     }
@@ -81,8 +91,8 @@ public class CategoryController {
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("gulimailproduct:category:delete")
-    public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
+    public R delete(@RequestBody Long[] catIds) {
+        categoryService.removeByIds(Arrays.asList(catIds));
 
         return R.ok();
     }
